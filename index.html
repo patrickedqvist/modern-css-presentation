@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Modern CSS Without the Guesswork</title>
+    <meta
+      name="description"
+      content="Grid, Flexbox, the cascade, and the features worth knowing in 2026."
+    >
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <script type="module" src="/assets/js/main.js"></script>
+    <script type="module" src="/assets/js/code-block.js"></script>
+    <script
+      async
+      src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+    ></script>
+  </head>
+  <body>
+    <!-- Navigation-->
+    <nav class="deck-nav" aria-label="Section navigation">
+      <a href="#intro-cover" data-row="0">Intro</a>
+      <a href="#baseline-intro" data-row="1">Baseline</a>
+      <a href="#mental-model-intro" data-row="2">Mental Model</a>
+      <a href="#grid-intro" data-row="3">Grid</a>
+      <a href="#flexbox-intro" data-row="4">Flexbox</a>
+      <a href="#cascade-intro" data-row="5">Cascade</a>
+      <a href="#modern-intro" data-row="6">Modern CSS</a>
+      <a href="#qa" data-row="7">Q&amp;A</a>
+      <span class="deck-nav__sep" aria-hidden="true"></span>
+      <button
+        class="deck-nav__fullscreen js-fullscreen"
+        type="button"
+        aria-label="Toggle fullscreen"
+      >
+        <i
+          class="deck-nav__fs-enter"
+          data-lucide="maximize"
+          width="16"
+          height="16"
+          aria-hidden="true"
+        ></i>
+        <i
+          class="deck-nav__fs-exit"
+          data-lucide="minimize"
+          width="16"
+          height="16"
+          aria-hidden="true"
+        ></i>
+      </button>
+    </nav>
+
+    <!-- Slide Deck -->
+    <main class="deck js-deck">
+      <!-- ─── Row 0: Intro ─── -->
+      <div class="deck-row deck-row--multi js-deck-row" id="row-0">
+        <section
+          id="intro-cover"
+          class="slide slide--title js-slide"
+          data-accent="blue"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <div class="slide__chrome">
+                <span class="slide__index">01</span>
+                <span class="slide__rule" aria-hidden="true"></span>
+              </div>
+
+              <div class="slide__content">
+                <h1 class="display-title">Modern CSS</h1>
+                <p class="lede">
+                  Grid, Flexbox, the cascade, and the features worth knowing in
+                  2026.
+                </p>
+              </div>
+
+              <div class="meta-row">
+                <span>Patrick Edqvist</span>
+                <span>Faggruppe Web</span>
+                <span>16.04.2026</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="orginal-questions" class="slide slide--quote js-slide" data-accent="blue">
+          <div class="slide__inner">
+            <div class="slide__frame">
+
+                <header class="slide__header">
+                  <p class="eyebrow">What we'll cover</p>
+                  <h2 class="slide-title">Original Questions</h2>
+                  <p class="slide-subtitle"></p>
+                </header>
+
+              <blockquote class="quote lede">
+                <ul>
+                    <li>Hvordan enkelt sette opp en layout i 2026 med for eksempel CSS grid. Hva er good practice i 2026?</li>
+                    <li>Hvordan organiserer man CSS i gode hirarkiker i 2026? Hva er good practice?</li>
+                    <li>Hvordan holder man kontroll på css?</li>
+                    <li>Hvilken css skal i globals.css?</li>
+                    <li>Hvilken css skal i React komponentene?</li>
+                    <li>Hvordan bruker man flexbox "riktig" i 2026?</li>
+                </ul>
+              </blockquote>
+            </div>
+          </div>
+
+        </section>
+
+        <section
+          id="intro-agenda"
+          class="slide slide--agenda js-slide"
+          data-accent="blue"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <header class="slide__header">
+                <p class="eyebrow">Overview</p>
+                <h2 class="slide-title">What we'll cover</h2>
+                <p class="slide-subtitle"></p>
+              </header>
+
+              <ol class="agenda-list">
+                <li><span>01</span> Intro</li>
+                <li><span>02</span> Versioning &amp; Baseline</li>
+                <li><span>03</span> Mental model</li>
+                <li><span>04</span> CSS Grid</li>
+                <li><span>05</span> Flexbox</li>
+                <li><span>06</span> Cascade &amp; <code>@layer</code></li>
+                <li><span>07</span> Modern CSS worth knowing</li>
+                <li><span>08</span> Q&amp;A</li>
+              </ol>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- ─── Row 1: Versioning & Baseline ─── -->
+      <div class="deck-row deck-row--multi js-deck-row" id="row-1">
+        <section
+          id="baseline-intro"
+          class="slide slide--section js-slide"
+          data-accent="blue"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <div class="slide__content">
+                <p class="eyebrow">Section 2</p>
+                <h2 class="section-title">Versioning</h2>
+                <p class="section-summary">
+                  CSS is a living standard. CSS3 and HTML5 was the end of
+                  version numbers.
+                </p>
+              </div>
+              <footer class="slide__footer">
+                <span class="kicker"></span>
+              </footer>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="baseline-living-standard"
+          class="slide slide--two-col js-slide"
+          data-accent="blue"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <header class="slide__header">
+                <p class="eyebrow">Context</p>
+                <h2 class="slide-title">Don't think in versions</h2>
+              </header>
+
+              <div class="columns columns--balanced">
+                <div class="prose">
+                  <p>
+                    CSS3 was the last numbered release. Modern CSS ships as
+                    specs agreed upon by the WC3 community, and implemented by
+                    browsers on their own schedule.
+                  </p>
+                  <p>
+                    Modules however can be in different versions, such as
+                    subgrid is a level 2 feature in the CSS Grid module. But the
+                    key point is that there is no global version number to
+                    track. And you don't think of versions when it comes to HTML
+                    and CSS. Instead you think in…
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="baseline-badges"
+          class="slide slide--compare js-slide"
+          data-accent="blue"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <header class="slide__header">
+                <p class="eyebrow">Availability</p>
+                <h2 class="slide-title">Baseline badges</h2>
+              </header>
+
+              <div class="compare-grid">
+                <article class="panel compare-card">
+                  <p class="compare-card__label">Newly available</p>
+                  <h3>Ready, but recent</h3>
+                  <p>
+                    Supported in current major browsers, but older versions may
+                    still lag behind.
+                  </p>
+                </article>
+
+                <article class="panel compare-card">
+                  <p class="compare-card__label">Widely available</p>
+                  <h3>Safe default</h3>
+                  <p>
+                    Supported long enough across major browsers that most teams
+                    can use it without hesitation.
+                  </p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- ─── Row 2: Mental Model ─── -->
+      <div class="deck-row deck-row--multi js-deck-row" id="row-2">
+        <section
+          id="mental-model-intro"
+          class="slide slide--section js-slide"
+          data-accent="purple"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <div class="slide__content">
+                <p class="eyebrow">Section 3</p>
+                <h2 class="section-title">Layout &amp; Control</h2>
+                <p class="section-summary">
+                  Two rules to hold in your head for the rest of the talk.
+                </p>
+              </div>
+              <footer class="slide__footer">
+                <span class="kicker">1D vs 2D · cascade priority stack</span>
+              </footer>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="mental-model-layout"
+          class="slide slide--two-col js-slide"
+          data-accent="green"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <header class="slide__header">
+                <p class="eyebrow">Layout rule</p>
+                <h2 class="slide-title">Grid vs Flexbox</h2>
+              </header>
+
+              <div class="columns columns--balanced">
+                <div class="prose">
+                  <p>
+                    If you are laying things out in one direction, use
+                    <strong>Flexbox</strong>. If you are laying things out in
+                    two directions, use <strong>Grid</strong>.
+                  </p>
+                  <p>
+                    Another lens: if you care deeply about track sizing and
+                    alignment, Grid gives you the right level of structure. If
+                    you care about flow and distribution, Flexbox is sufficient.
+                  </p>
+                </div>
+
+                <aside class="panel">
+                  <p class="panel__eyebrow">Rule of thumb</p>
+                  <ul class="feature-list">
+                    <li>One axis → Flexbox</li>
+                    <li>Two axes → Grid</li>
+                    <li>Tabular data → Table</li>
+                  </ul>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="mental-model-cascade"
+          class="slide slide--code js-slide"
+          data-accent="purple"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <header class="slide__header">
+                <p class="eyebrow">Control rule</p>
+                <h2 class="slide-title">The cascade priority stack</h2>
+              </header>
+
+              <div class="code-layout">
+                <code-block lang="text"
+                  ><script type="text/plain">
+                  When rules conflict:
+                    1. Layer order       (@layer)
+                    2. Specificity       (#id > .class > element)
+                    3. Source order      (last rule wins)
+                </script></code-block
+                >
+
+                <aside class="panel panel--annotation">
+                  <p class="panel__eyebrow">Why it matters</p>
+                  <ul class="feature-list">
+                    <li>Most CSS conflicts are predictable</li>
+                    <li><code>@layer</code> gives you explicit control</li>
+                    <li>Specificity is not the first tool to reach for</li>
+                  </ul>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- ─── Row 3: CSS Grid ─── -->
+      <div class="deck-row deck-row--multi js-deck-row" id="row-3">
+        <section
+          id="grid-intro"
+          class="slide slide--section js-slide"
+          data-accent="blue"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <div class="slide__content">
+                <p class="eyebrow">Section 4</p>
+                <h2 class="section-title">CSS Grid</h2>
+                <p class="section-summary">
+                  Layout you can reason about: explicit tracks, template areas,
+                  and subgrid.
+                </p>
+              </div>
+              <footer class="slide__footer">
+                <span class="kicker">Architecture over hacks</span>
+              </footer>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="grid-editorial-example"
+          class="slide slide--codepen js-slide"
+          data-accent="blue"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <p
+                class="codepen"
+                data-height="100%"
+                data-theme-id="dark"
+                data-pen-title="Editorial overlay — 12-column grid"
+                data-default-tab="result"
+                data-slug-hash="vEXvjpQ"
+                data-user="patrickedqvist"
+              >
+                <span
+                  >See the Pen
+                  <a href="https://codepen.io/patrickedqvist/pen/vEXvjpQ"
+                    >Modern CSS — Card Overlay + Image</a
+                  >
+                  by Patrick Edqvist (<a
+                    href="https://codepen.io/patrickedqvist"
+                    >@patrickedqvist</a
+                  >) on <a href="https://codepen.io">CodePen</a>.</span
+                >
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="grid-template-areas"
+          class="slide slide--code js-slide"
+          data-accent="blue"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <header class="slide__header">
+                <p class="eyebrow">Readable layout</p>
+                <h2 class="slide-title">Template areas</h2>
+              </header>
+
+              <div class="code-layout">
+                <code-block lang="css"
+                  ><script type="text/plain">
+                    .layout {
+                      display: grid;
+                      grid-template-areas:
+                        "header header"
+                        "sidebar main"
+                        "footer footer";
+                    }
+
+                    .header  { grid-area: header; }
+                    .sidebar { grid-area: sidebar; }
+                    .main    { grid-area: main; }
+                    .footer  { grid-area: footer; }
+                </script></code-block
+                >
+
+                <aside class="panel panel--annotation">
+                  <p class="panel__eyebrow">Why it matters</p>
+                  <ul class="feature-list">
+                    <li>Layout becomes self-documenting</li>
+                    <li>Easy to adapt responsively</li>
+                    <li>Great for page-level structure</li>
+                  </ul>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="grid-app-layout-example"
+          class="slide slide--codepen js-slide"
+          data-accent="blue"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <p
+                class="codepen"
+                data-height="100%"
+                data-theme-id="dark"
+                data-pen-title="App Layout"
+                data-default-tab="result"
+                data-slug-hash="GgjPdmz"
+                data-user="patrickedqvist"
+              >
+                <span
+                  >See the Pen
+                  <a href="https://codepen.io/patrickedqvist/pen/GgjPdmz"
+                    >App Layout</a
+                  >
+                  by Patrick Edqvist (<a
+                    href="https://codepen.io/patrickedqvist"
+                    >@patrickedqvist</a
+                  >) on <a href="https://codepen.io">CodePen</a>.</span
+                >
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="grid-calendar-example"
+          class="slide slide--codepen js-slide"
+          data-accent="blue"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <p
+                class="codepen"
+                data-height="100%"
+                data-theme-id="dark"
+                data-pen-title="Calendar — April 2026"
+                data-default-tab="result"
+                data-slug-hash="myraLMa"
+                data-user="patrickedqvist"
+              >
+                <span
+                  >See the Pen
+                  <a href="https://codepen.io/patrickedqvist/pen/myraLMa"
+                    >Calendar — April 2026</a
+                  >
+                  by Patrick Edqvist (<a
+                    href="https://codepen.io/patrickedqvist"
+                    >@patrickedqvist</a
+                  >) on <a href="https://codepen.io">CodePen</a>.</span
+                >
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="grid-subgrid-example"
+          class="slide slide--codepen js-slide"
+          data-accent="blue"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <p
+                class="codepen"
+                data-height="100%"
+                data-theme-id="dark"
+                data-pen-title="Subgrid — aligned rows across cards"
+                data-default-tab="result"
+                data-slug-hash="qEaLgGB"
+                data-user="patrickedqvist"
+              >
+                <span
+                  >See the Pen
+                  <a href="https://codepen.io/patrickedqvist/pen/qEaLgGB"
+                    >Subgrid — aligned rows across cards</a
+                  >
+                  by Patrick Edqvist (<a
+                    href="https://codepen.io/patrickedqvist"
+                    >@patrickedqvist</a
+                  >) on <a href="https://codepen.io">CodePen</a>.</span
+                >
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="grid-subgrid"
+          class="slide slide--takeaway js-slide"
+          data-accent="blue"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <div class="takeaway">
+                <p class="eyebrow">Aha moment</p>
+                <h2 class="takeaway__title">
+                  Subgrid lets nested content align to the parent grid.
+                </h2>
+                <p class="takeaway__support">
+                  No fixed heights. The content determines the size, and subgrid
+                  makes sure it's shared across siblings. Baseline widely
+                  available since late 2023.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- ─── Row 4: Flexbox ─── -->
+      <div class="deck-row deck-row--multi js-deck-row" id="row-4">
+        <section
+          id="flexbox-intro"
+          class="slide slide--section js-slide"
+          data-accent="green"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <div class="slide__content">
+                <p class="eyebrow">Section 5</p>
+                <h2 class="section-title">Flexbox</h2>
+                <p class="section-summary">
+                  One direction, practical alignment, and patterns you use every
+                  week.
+                </p>
+              </div>
+              <footer class="slide__footer">
+                <span class="kicker">Flow, alignment, distribution</span>
+              </footer>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="flexbox-one-axis"
+          class="slide slide--two-col js-slide"
+          data-accent="green"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <header class="slide__header">
+                <p class="eyebrow">Core idea</p>
+                <h2 class="slide-title">Flexbox is for one direction</h2>
+              </header>
+
+              <div class="columns columns--balanced">
+                <div class="prose">
+                  <p>
+                    Flexbox shines when you care about distribution and
+                    alignment along a single axis.
+                  </p>
+                  <p>
+                    If you find yourself using <code>flex-wrap</code> and
+                    fighting to align items across rows — stop. That's grid.
+                    Flexbox doesn't know about the other row.
+                  </p>
+                </div>
+
+                <aside class="panel">
+                  <p class="panel__eyebrow">Where it wins</p>
+                  <ul class="feature-list">
+                    <li>Navigation bars</li>
+                    <li>Toolbars &amp; button groups</li>
+                    <li>Vertical stacks</li>
+                    <li>Centering content</li>
+                  </ul>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="flexbox-shorthand"
+          class="slide slide--code js-slide"
+          data-accent="green"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <header class="slide__header">
+                <p class="eyebrow">Shorthand</p>
+                <h2 class="slide-title">The flex shorthand, decoded</h2>
+              </header>
+
+              <div class="code-layout">
+                <code-block lang="css">
+                  <script type="text/plain">
+                      flex: <grow> <shrink> <basis>;
+
+                      flex: 1;      /* = 1 1 0%   — share all space equally */
+                      flex: auto;   /* = 1 1 auto — share extra space */
+                      flex: none;   /* = 0 0 auto — rigid, don't flex */
+                      flex: 0 1 auto;  /* ← the default */
+                    </script>
+                </code-block>
+
+                <aside class="panel panel--annotation">
+                  <p class="panel__eyebrow">Key difference</p>
+                  <ul class="feature-list">
+                    <li>
+                      <code>flex: 1</code>
+                      — items start from zero, equal widths
+                    </li>
+                    <li>
+                      <code>flex: auto</code>
+                      — items start from content, share extra
+                    </li>
+                    <li><code>flex: none</code> — item is rigid</li>
+                  </ul>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="flexbox-patterns"
+          class="slide slide--code js-slide"
+          data-accent="green"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <header class="slide__header">
+                <p class="eyebrow">Practical</p>
+                <h2 class="slide-title">Patterns worth knowing</h2>
+              </header>
+
+              <div class="code-layout">
+                <code-block lang="css">
+                  <script type="text/plain">
+                      /* Push last item right */
+                      .toolbar :last-child {
+                        margin-left: auto;
+                      }
+
+                      /* Flexible content + fixed sidebar */
+                      .sidebar { flex: none; width: 250px; }
+                      .content { flex: 1; min-width: 0; }
+
+                      /* Gap works on flex now */
+                      .nav { display: flex; gap: 1rem; }
+                      </script>
+                </code-block>
+
+                <aside class="panel panel--annotation">
+                  <p class="panel__eyebrow">Watch out</p>
+                  <ul class="feature-list">
+                    <li><code>margin-left: auto</code> pushes items apart</li>
+                    <li><code>min-width: 0</code> prevents overflow</li>
+                    <li>
+                      <code>gap</code>
+                      replaces <code>.item + .item</code> hacks
+                    </li>
+                  </ul>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- ─── Row 5: Cascade & @layer ─── -->
+      <div class="deck-row deck-row--multi js-deck-row" id="row-5">
+        <section
+          id="cascade-intro"
+          class="slide slide--section js-slide"
+          data-accent="purple"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <div class="slide__content">
+                <p class="eyebrow">Section 6</p>
+                <h2 class="section-title">
+                  The Cascade &amp; <code>@layer</code>
+                </h2>
+                <p class="section-summary">
+                  Stop fighting CSS by making the priority model explicit.
+                </p>
+              </div>
+              <footer class="slide__footer">
+                <span class="kicker"
+                  >Predictability beats specificity wars</span
+                >
+              </footer>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="cascade-priority"
+          class="slide slide--code js-slide"
+          data-accent="purple"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <header class="slide__header">
+                <p class="eyebrow">The full stack</p>
+                <h2 class="slide-title">How the browser decides</h2>
+              </header>
+
+              <div class="code-layout">
+                <code-block lang="text"
+                  ><script type="text/plain">
+                  When two rules conflict:
+
+                    1. Origin & importance
+                       (user-agent → user → author;
+                        !important reverses it)
+
+                    2. Layer order
+                       (@layer declaration order)
+
+                    3. Specificity
+                       (inline > #id > .class > element)
+
+                    4. Source order
+                       (last rule wins)
+                </script></code-block
+                >
+
+                <aside class="panel panel--annotation">
+                  <p class="panel__eyebrow">Key insight</p>
+                  <ul class="feature-list">
+                    <li>Four tiebreakers, checked in order</li>
+                    <li>Most of the time: levels 3 &amp; 4</li>
+                    <li>Level 2 — layers — is the real unlock</li>
+                  </ul>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="cascade-layer"
+          class="slide slide--code js-slide"
+          data-accent="purple"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <header class="slide__header">
+                <p class="eyebrow"><code>@layer</code></p>
+                <h2 class="slide-title">Explicit cascade control</h2>
+              </header>
+
+              <div class="code-layout">
+                <code-block lang="css"
+                  ><script type="text/plain">
+                  @layer base, components, utilities;
+
+                  @layer base {
+                    h1 { font-size: 2rem; color: black; }
+                  }
+
+                  @layer components {
+                    .hero-title { color: navy; }
+                  }
+
+                  @layer utilities {
+                    .text-brand { color: var(--brand); }
+                  }
+
+                  /* utilities wins — by layer order,
+                     not specificity */
+                </script></code-block
+                >
+
+                <aside class="panel panel--annotation">
+                  <p class="panel__eyebrow">Important detail</p>
+                  <ul class="feature-list">
+                    <li>Later layers beat earlier layers</li>
+                    <li>Unlayered CSS beats all layers</li>
+                    <li>Tailwind v4 uses layers internally</li>
+                  </ul>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="cascade-takeaway"
+          class="slide slide--takeaway js-slide"
+          data-accent="purple"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <div class="takeaway">
+                <p class="eyebrow">Durable takeaway</p>
+                <h2 class="takeaway__title">
+                  The cascade is not magic. It is a priority system.
+                </h2>
+                <p class="takeaway__support">
+                  Make it explicit instead of emergent. Declare the order. Move
+                  on. The specific tools may change — the idea underneath is
+                  durable.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- ─── Row 6: Modern CSS Worth Knowing ─── -->
+      <div class="deck-row deck-row--multi js-deck-row" id="row-6">
+        <section
+          id="modern-intro"
+          class="slide slide--section js-slide"
+          data-accent="blue"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <div class="slide__content">
+                <p class="eyebrow">Section 7</p>
+                <h2 class="section-title">Modern CSS Worth Knowing</h2>
+                <p class="section-summary">
+                  Three features that meaningfully change how you build
+                  interfaces. All Baseline widely available.
+                </p>
+              </div>
+              <footer class="slide__footer">
+                <span class="kicker">Useful now, not just interesting</span>
+              </footer>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="modern-has"
+          class="slide slide--code js-slide"
+          data-accent="blue"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <header class="slide__header">
+                <p class="eyebrow">Feature</p>
+                <h2 class="slide-title">
+                  <code>:has()</code>
+                  — the parent selector
+                </h2>
+              </header>
+
+              <div class="code-layout">
+                <code-block lang="css"
+                  ><script type="text/plain">
+                  /* Style card when it has an urgent badge */
+                  .card:has(.badge--urgent) {
+                    border-color: var(--color-danger);
+                  }
+
+                  /* Style field when input is invalid */
+                  .field:has(input:invalid) {
+                    --field-color: var(--color-danger);
+                  }
+
+                  /* Nav when dropdown is open */
+                  .nav:has([aria-expanded="true"]) {
+                    background: var(--color-surface);
+                  }
+                </script></code-block
+                >
+
+                <aside class="panel panel--annotation">
+                  <p class="panel__eyebrow">Why it matters</p>
+                  <ul class="feature-list">
+                    <li>Parent-aware styling — no JS needed</li>
+                    <li>Style wrappers based on children</li>
+                    <li>Works on top of design systems you don't own</li>
+                  </ul>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="modern-container"
+          class="slide slide--code js-slide"
+          data-accent="green"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <header class="slide__header">
+                <p class="eyebrow">Feature</p>
+                <h2 class="slide-title">Container queries</h2>
+              </header>
+
+              <div class="code-layout">
+                <code-block lang="css"
+                  ><script type="text/plain">
+                  .card-container {
+                    container-type: inline-size;
+                  }
+
+                  @container (min-width: 30rem) {
+                    .card {
+                      display: grid;
+                      grid-template-columns: auto 1fr;
+                      gap: 1rem;
+                    }
+                  }
+                </script></code-block
+                >
+
+                <aside class="panel panel--annotation">
+                  <p class="panel__eyebrow">Why it matters</p>
+                  <ul class="feature-list">
+                    <li>Responsive to the component, not the viewport</li>
+                    <li>Same component adapts to different contexts</li>
+                    <li>Components respond to their container</li>
+                  </ul>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="modern-focus"
+          class="slide slide--code js-slide"
+          data-accent="purple"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <header class="slide__header">
+                <p class="eyebrow">Feature</p>
+                <h2 class="slide-title"><code>:focus-visible</code></h2>
+              </header>
+
+              <div class="code-layout">
+                <code-block lang="css"
+                  ><script type="text/plain">
+                  button:focus-visible {
+                    outline: 2px solid var(--color-focus);
+                    outline-offset: 2px;
+                  }
+
+                  button:focus:not(:focus-visible) {
+                    outline: none;
+                  }
+                </script></code-block
+                >
+
+                <aside class="panel panel--annotation">
+                  <p class="panel__eyebrow">Why it matters</p>
+                  <ul class="feature-list">
+                    <li>Focus rings only for keyboard users</li>
+                    <li>Cleaner pointer interactions</li>
+                    <li>Accessibility without visual noise</li>
+                  </ul>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- ─── Row 7: Q&A ─── -->
+      <div class="deck-row js-deck-row" id="row-7">
+        <section id="qa" class="slide slide--qa js-slide" data-accent="blue">
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <div class="slide__content">
+                <p class="eyebrow">Closing</p>
+                <h2 class="display-title">Q&amp;A</h2>
+                <p class="lede">
+                  Questions, disagreements, war stories, or things you want to
+                  see in real code?
+                </p>
+                <div class="meta-row"><span>Patrick Edqvist</span></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

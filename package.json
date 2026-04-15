@@ -1,0 +1,22 @@
+{
+  "name": "css-presentation",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "biome check .",
+    "format": "biome check --fix ."
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.4.11",
+    "vite": "^5.4.0"
+  },
+  "dependencies": {
+    "lucide": "^1.8.0",
+    "shiki": "^4.0.2"
+  }
+}
