@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/assets/css/theme.css">
     <script type="module" src="/assets/js/main.js"></script>
     <script type="module" src="/assets/js/code-block.js"></script>
+    <script type="module" src="/assets/js/spec-demo.js"></script>
     <script
       async
       src="https://cpwebassets.codepen.io/assets/embed/ei.js"
@@ -128,8 +129,9 @@
                 <li><span>04</span> CSS Grid</li>
                 <li><span>05</span> Flexbox</li>
                 <li><span>06</span> Cascade &amp; <code>@layer</code></li>
-                <li><span>07</span> Modern CSS worth knowing</li>
-                <li><span>08</span> Q&amp;A</li>
+                <li><span>07</span> Scoping &amp; Organization</li>
+                <li><span>08</span> Modern CSS worth knowing</li>
+                <li><span>09</span> Q&amp;A</li>
               </ol>
             </div>
           </div>
@@ -206,21 +208,48 @@
 
               <div class="compare-grid">
                 <article class="panel compare-card">
-                  <p class="compare-card__label">Newly available</p>
-                  <h3>Ready, but recent</h3>
-                  <p>
-                    Supported in current major browsers, but older versions may
-                    still lag behind.
-                  </p>
+                  <img
+                    src="assets/img/baseline-limited.png"
+                    alt="Baseline limited availability badge"
+                    class="compare-card__badge"
+                  />
+                  <div class="compare-card__body">
+                    <h3>Not everywhere yet</h3>
+                    <p>
+                      Supported in some but not all major browsers. Experiment
+                      with fallbacks — not ready for production without them.
+                    </p>
+                  </div>
                 </article>
 
                 <article class="panel compare-card">
-                  <p class="compare-card__label">Widely available</p>
-                  <h3>Safe default</h3>
-                  <p>
-                    Supported long enough across major browsers that most teams
-                    can use it without hesitation.
-                  </p>
+                  <img
+                    src="assets/img/baseline-newly.png"
+                    alt="Baseline newly available badge"
+                    class="compare-card__badge"
+                  />
+                  <div class="compare-card__body">
+                    <h3>Ready, but recent</h3>
+                    <p>
+                      Supported in current major browsers, but older versions
+                      may still lag behind.
+                    </p>
+                  </div>
+                </article>
+
+                <article class="panel compare-card">
+                  <img
+                    src="assets/img/baseline-widely.png"
+                    alt="Baseline widely available badge"
+                    class="compare-card__badge"
+                  />
+                  <div class="compare-card__body">
+                    <h3>Safe default</h3>
+                    <p>
+                      Supported long enough across major browsers that most
+                      teams can use it without hesitation.
+                    </p>
+                  </div>
                 </article>
               </div>
             </div>
@@ -247,6 +276,71 @@
               <footer class="slide__footer">
                 <span class="kicker">1D vs 2D · cascade priority stack</span>
               </footer>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="mental-model-algorithms"
+          class="slide slide--two-col js-slide"
+          data-accent="purple"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <header class="slide__header">
+                <p class="eyebrow">Big picture</p>
+                <h2 class="slide-title">Five layout algorithms</h2>
+              </header>
+
+              <div class="columns columns--balanced">
+                <div class="prose">
+                  <p>
+                    CSS isn't one layout system — it's five. The same
+                    property can behave differently depending on which
+                    algorithm is active. Most "why doesn't this work?"
+                    moments come from mixing up their rules.
+                  </p>
+                </div>
+
+                <aside class="panel">
+                  <p class="panel__eyebrow">The five</p>
+                  <ul class="feature-list">
+                    <li><strong>Flow</strong> — block &amp; inline (the default)</li>
+                    <li><strong>Positioned</strong> — absolute / fixed / sticky</li>
+                    <li><strong>Table</strong> — tabular data, columns size to content</li>
+                    <li><strong>Flex</strong> — one-directional layout</li>
+                    <li><strong>Grid</strong> — two-dimensional layout</li>
+                  </ul>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="mental-model-timeline"
+          class="slide slide--code js-slide"
+          data-accent="purple"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <header class="slide__header">
+                <p class="eyebrow">History</p>
+                <h2 class="slide-title">Evolution</h2>
+              </header>
+
+              <div class="code-layout">
+                <code-block lang="text"
+                  ><script type="text/plain">
+                  Flow         1996   (CSS1)
+                  Positioned   1998   (CSS2)
+                  Table        1998   (CSS2)
+                  Flex         ~2014  (broadly usable)
+                  Grid         2017   (Chrome, Firefox, Safari)
+                  Subgrid      2023   (cross-browser)
+                </script></code-block
+                >
+              </div>
             </div>
           </div>
         </section>
@@ -582,11 +676,6 @@
                     Flexbox shines when you care about distribution and
                     alignment along a single axis.
                   </p>
-                  <p>
-                    If you find yourself using <code>flex-wrap</code> and
-                    fighting to align items across rows — stop. That's grid.
-                    Flexbox doesn't know about the other row.
-                  </p>
                 </div>
 
                 <aside class="panel">
@@ -596,6 +685,58 @@
                     <li>Toolbars &amp; button groups</li>
                     <li>Vertical stacks</li>
                     <li>Centering content</li>
+                  </ul>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="flexbox-hypothetical"
+          class="slide slide--code js-slide"
+          data-accent="green"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <header class="slide__header">
+                <p class="eyebrow">Key concept</p>
+                <h2 class="slide-title">Hypothetical size</h2>
+              </header>
+
+              <div class="code-layout">
+                <code-block lang="css"
+                  ><script type="text/plain">
+                  /* In Flow: width is a hard constraint */
+                  .box { width: 500px; }
+                  /* → the box IS 500px */
+
+                  /* In Flex: width is a suggestion */
+                  .flex-parent { display: flex; }
+                  .flex-parent > .box { width: 500px; }
+                  /* → the box MIGHT be 500px */
+
+                  /* flex-basis is the honest version */
+                  .flex-parent > .box { flex-basis: 500px; }
+                  /* → "start at 500px, then negotiate" */
+                </script></code-block
+                >
+
+                <aside class="panel panel--annotation">
+                  <p class="panel__eyebrow">flex-basis vs width</p>
+                  <ul class="feature-list">
+                    <li>
+                      <code>flex-basis</code> wins over
+                      <code>width</code> when both are set
+                    </li>
+                    <li>
+                      <code>flex-basis</code> works in the flex
+                      direction (height in column mode)
+                    </li>
+                    <li>
+                      <code>flex-basis: 0</code> = ignore content,
+                      divide by grow factors
+                    </li>
                   </ul>
                 </aside>
               </div>
@@ -642,6 +783,96 @@
                   </ul>
                 </aside>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="flexbox-proportional"
+          class="slide slide--code js-slide"
+          data-accent="green"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <header class="slide__header">
+                <p class="eyebrow">In practice</p>
+                <h2 class="slide-title">Proportional grow</h2>
+              </header>
+
+              <div class="code-layout">
+                <code-block lang="css"
+                  ><script type="text/plain">
+                  form {
+                    display: flex;
+                    align-items: flex-end;
+                    flex-wrap: wrap;
+                    gap: 16px;
+                  }
+                  .name {
+                    flex-grow: 1;
+                    flex-basis: 160px;
+                  }
+                  .email {
+                    flex-grow: 3;   /* 3× more extra space */
+                    flex-basis: 200px;
+                  }
+                  button {
+                    flex-grow: 1;
+                    flex-basis: 80px;
+                  }
+                </script></code-block
+                >
+
+                <aside class="panel panel--annotation">
+                  <p class="panel__eyebrow">How it works</p>
+                  <ul class="feature-list">
+                    <li>
+                      <code>flex-basis</code> = minimum comfortable width
+                    </li>
+                    <li>
+                      <code>flex-grow</code> divides extra space
+                      proportionally (1 : 3 : 1)
+                    </li>
+                    <li>
+                      <code>flex-wrap</code> lets items wrap instead
+                      of being crushed
+                    </li>
+                    <li>Fluid &amp; responsive — no media queries needed</li>
+                  </ul>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="flexbox-proportional-example"
+          class="slide slide--codepen js-slide"
+          data-accent="green"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <p
+                class="codepen"
+                data-height="100%"
+                data-theme-id="dark"
+                data-pen-title="Modern CSS - Flex grow"
+                data-default-tab="result"
+                data-slug-hash="LERqboP"
+                data-editable="true"
+                data-user="patrickedqvist"
+              >
+                <span
+                  >See the Pen
+                  <a href="https://codepen.io/patrickedqvist/pen/LERqboP"
+                    >Modern CSS - Flex grow</a
+                  >
+                  by Patrick Edqvist (<a
+                    href="https://codepen.io/patrickedqvist"
+                    >@patrickedqvist</a
+                  >) on <a href="https://codepen.io">CodePen</a>.</span
+                >
+              </p>
             </div>
           </div>
         </section>
@@ -736,9 +967,7 @@
                   ><script type="text/plain">
                   When two rules conflict:
 
-                    1. Origin & importance
-                       (user-agent → user → author;
-                        !important reverses it)
+                    1. Origin & importance (!important)
 
                     2. Layer order
                        (@layer declaration order)
@@ -752,12 +981,21 @@
                 >
 
                 <aside class="panel panel--annotation">
-                  <p class="panel__eyebrow">Key insight</p>
-                  <ul class="feature-list">
-                    <li>Four tiebreakers, checked in order</li>
-                    <li>Most of the time: levels 3 &amp; 4</li>
-                    <li>Level 2 — layers — is the real unlock</li>
-                  </ul>
+                  <p class="panel__eyebrow">Example — which color wins?</p>
+                  <code-block lang="html"
+                    ><script type="text/plain">
+                    <div id="main">
+                      <h1 class="title">Hello</h1>
+                    </div>
+                  </script></code-block
+                  >
+                  <code-block lang="css"
+                    ><script type="text/plain">
+                    h1          { color: blue; }
+                    .title      { color: green; }
+                    #main h1    { color: red; }
+                  </script></code-block
+                  >
                 </aside>
               </div>
             </div>
@@ -765,7 +1003,180 @@
         </section>
 
         <section
-          id="cascade-layer"
+          id="cascade-weight-categories"
+          class="slide slide--two-col js-slide"
+          data-accent="purple"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <header class="slide__header">
+                <p class="eyebrow">Specificity</p>
+                <h2 class="slide-title">Selector weight categories</h2>
+              </header>
+
+              <div class="weight-cards">
+                <div class="weight-card">
+                  <span class="weight-card__score">1-0-0</span>
+                  <strong class="weight-card__label">ID</strong>
+                  <code class="weight-card__example">#example</code>
+                </div>
+                <div class="weight-card">
+                  <span class="weight-card__score">0-1-0</span>
+                  <strong class="weight-card__label">Class</strong>
+                  <code class="weight-card__example">.card</code>
+                  <code class="weight-card__example">[type="radio"]</code>
+                  <code class="weight-card__example">:hover</code>
+                </div>
+                <div class="weight-card">
+                  <span class="weight-card__score">0-0-1</span>
+                  <strong class="weight-card__label">Type</strong>
+                  <code class="weight-card__example">p</code>
+                  <code class="weight-card__example">::before</code>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="cascade-scoring"
+          class="slide slide--code js-slide"
+          data-accent="purple"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <header class="slide__header">
+                <p class="eyebrow">Specificity</p>
+                <h2 class="slide-title">The scoring system</h2>
+              </header>
+
+              <div class="code-layout">
+                <code-block lang="css"
+                  ><script type="text/plain">
+                  p             { color: gray; }   /* 0-0-1 */
+                  .card p       { color: blue; }   /* 0-1-1 */
+                  .card .title  { color: green; }  /* 0-2-0 */
+                  #main .card p { color: red; }    /* 1-1-1 ✅ */
+                </script></code-block
+                >
+
+                <aside class="panel panel--annotation">
+                  <p class="panel__eyebrow">The HTML</p>
+                  <code-block lang="html"
+                    ><script type="text/plain">
+                    <div id="main">
+                      <div class="card">
+                        <p class="title">Title</p>
+                        <p>Body text</p>
+                      </div>
+                    </div>
+                  </script></code-block
+                  >
+                </aside>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="cascade-weight-interactive"
+          class="slide slide--centered js-slide"
+          data-accent="purple"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <header class="slide__header">
+                <p class="eyebrow">Specificity</p>
+                <h2 class="slide-title">Selector weight</h2>
+              </header>
+
+              <div class="spec-demo js-spec-demo">
+                <code class="spec-demo__selector js-spec-selector">*</code>
+
+                <div class="spec-demo__weights">
+                  <div class="spec-demo__col">
+                    <span class="spec-demo__digit js-spec-digit spec-digit--zero">0</span>
+                    <span class="spec-demo__label">ID</span>
+                  </div>
+                  <div class="spec-demo__col">
+                    <span class="spec-demo__digit js-spec-digit spec-digit--zero">0</span>
+                    <span class="spec-demo__label">Class</span>
+                  </div>
+                  <div class="spec-demo__col">
+                    <span class="spec-demo__digit js-spec-digit spec-digit--zero">0</span>
+                    <span class="spec-demo__label">Type</span>
+                  </div>
+                </div>
+
+                <div class="spec-demo__controls">
+                  <button class="spec-demo__btn js-spec-prev" type="button" aria-label="Previous selector">&#8592;</button>
+                  <span class="spec-demo__counter js-spec-counter">1 / 7</span>
+                  <button class="spec-demo__btn js-spec-next" type="button" aria-label="Next selector">&#8594;</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="cascade-gotcha"
+          class="slide slide--centered js-slide"
+          data-accent="purple"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <header class="slide__header">
+                <p class="eyebrow">The gotcha</p>
+                <h2 class="slide-title">Columns don't add up</h2>
+              </header>
+
+              <div class="spec-vs">
+                <div class="spec-vs__side spec-vs__side--loser">
+                  <code class="spec-vs__selector">.a.b.c.d.e</code>
+                  <div class="spec-vs__weights">
+                    <div class="spec-vs__col">
+                      <span class="spec-vs__digit spec-digit--zero">0</span>
+                      <span class="spec-vs__label">ID</span>
+                    </div>
+                    <div class="spec-vs__col">
+                      <span class="spec-vs__digit spec-digit--lit">5</span>
+                      <span class="spec-vs__label">Class</span>
+                    </div>
+                    <div class="spec-vs__col">
+                      <span class="spec-vs__digit spec-digit--zero">0</span>
+                      <span class="spec-vs__label">Type</span>
+                    </div>
+                  </div>
+                  <span class="spec-vs__verdict">loses</span>
+                </div>
+
+                <span class="spec-vs__divider">vs</span>
+
+                <div class="spec-vs__side spec-vs__side--winner">
+                  <code class="spec-vs__selector">#id</code>
+                  <div class="spec-vs__weights">
+                    <div class="spec-vs__col">
+                      <span class="spec-vs__digit spec-digit--lit">1</span>
+                      <span class="spec-vs__label">ID</span>
+                    </div>
+                    <div class="spec-vs__col">
+                      <span class="spec-vs__digit spec-digit--zero">0</span>
+                      <span class="spec-vs__label">Class</span>
+                    </div>
+                    <div class="spec-vs__col">
+                      <span class="spec-vs__digit spec-digit--zero">0</span>
+                      <span class="spec-vs__label">Type</span>
+                    </div>
+                  </div>
+                  <span class="spec-vs__verdict">wins</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="cascade-layer-concept"
           class="slide slide--code js-slide"
           data-accent="purple"
         >
@@ -786,25 +1197,280 @@
                   }
 
                   @layer components {
-                    .hero-title { color: navy; }
+                    .hero-title { color: navy; font-size: 3rem; }
+                    .card { padding: 1.5rem; }
                   }
 
                   @layer utilities {
-                    .text-brand { color: var(--brand); }
+                    .text-blue-600 { color: #2563eb; }
+                    .p-4 { padding: 1rem; }
+                    .rounded-lg { border-radius: 0.5rem; }
                   }
-
-                  /* utilities wins — by layer order,
-                     not specificity */
                 </script></code-block
                 >
 
                 <aside class="panel panel--annotation">
-                  <p class="panel__eyebrow">Important detail</p>
+                  <p class="panel__eyebrow">The idea</p>
                   <ul class="feature-list">
+                    <li>Declare layer order once</li>
                     <li>Later layers beat earlier layers</li>
+                    <li>Regardless of specificity</li>
                     <li>Unlayered CSS beats all layers</li>
-                    <li>Tailwind v4 uses layers internally</li>
                   </ul>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="cascade-without-layer"
+          class="slide slide--code js-slide"
+          data-accent="purple"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <header class="slide__header">
+                <p class="eyebrow">The problem</p>
+                <h2 class="slide-title">Without <code>@layer</code></h2>
+              </header>
+
+              <div class="code-layout">
+                <code-block lang="css"
+                  ><script type="text/plain">
+                  <h1 class="hero-title text-blue-600">
+                    Welcome
+                  </h1>
+
+                  /* component */
+                  .hero-title { color: navy; font-size: 3rem; }
+
+                  /* utility */
+                  .text-blue-600 { color: #2563eb; }
+
+                  /* → text-blue-600 wins (last in source order)
+                     But reorder the imports? It breaks.
+                     Add section .hero-title? It breaks. */
+                </script></code-block
+                >
+
+                <aside class="panel panel--annotation">
+                  <p class="panel__eyebrow">Fragile</p>
+                  <ul class="feature-list">
+                    <li>Same specificity — source order decides</li>
+                    <li>Reorder imports → different winner</li>
+                    <li>Add one selector → specificity war</li>
+                    <li>Add <code>!important</code> → worse</li>
+                  </ul>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="cascade-layer"
+          class="slide slide--code js-slide"
+          data-accent="purple"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <header class="slide__header">
+                <p class="eyebrow">The fix</p>
+                <h2 class="slide-title">With <code>@layer</code></h2>
+              </header>
+
+              <div class="code-layout">
+                <code-block lang="css"
+                  ><script type="text/plain">
+                  <h1 class="hero-title text-blue-600">
+                    Welcome
+                  </h1>
+
+                  @layer components, utilities;
+
+                  @layer components {
+                    .hero-title { color: navy; font-size: 3rem; }
+                  }
+
+                  @layer utilities {
+                    .text-blue-600 { color: #2563eb; }
+                    .p-4 { padding: 1rem; }
+                    .rounded-lg { border-radius: 0.5rem; }
+                  }
+
+                  /* → text-blue-600 wins — always.
+                     Layer order decides. */
+                </script></code-block
+                >
+
+                <aside class="panel panel--annotation">
+                  <p class="panel__eyebrow">Predictable</p>
+                  <ul class="feature-list">
+                    <li>Utilities layer beats components — always</li>
+                    <li>Import order doesn't matter</li>
+                    <li>Specificity doesn't matter</li>
+                    <li>This is what Tailwind v4 does under the hood</li>
+                    <li>Unlayered CSS (your DS) still beats all layers</li>
+                  </ul>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Real-world specificity problems -->
+
+        <section
+          id="cascade-problem-library"
+          class="slide slide--code js-slide"
+          data-accent="purple"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <header class="slide__header">
+                <p class="eyebrow">In practice</p>
+                <h2 class="slide-title">Overriding a component library</h2>
+              </header>
+
+              <div class="code-layout">
+                <code-block lang="css"
+                  ><script type="text/plain">
+                  /* The design system ships this */
+                  .card .title {           /* 0-2-0 */
+                    color: black;
+                  }
+
+                  /* Your override — loses */
+                  .title {                 /* 0-1-0 */
+                    color: navy;
+                  }
+                </script></code-block
+                >
+
+                <aside class="panel panel--annotation">
+                  <p class="panel__eyebrow">Two fixes</p>
+                  <code-block lang="css"
+                    ><script type="text/plain">
+                    /* Specificity: match their weight */
+                    .card .title { color: navy; }
+
+                    /* Layer: don't play their game */
+                    @layer ds, app;
+                    @import "ds.css" layer(ds);
+
+                    @layer app {
+                      .title { color: navy; }
+                    }
+                  </script></code-block
+                  >
+                </aside>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="cascade-problem-important"
+          class="slide slide--code js-slide"
+          data-accent="purple"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <header class="slide__header">
+                <p class="eyebrow">In practice</p>
+                <h2 class="slide-title">The <code>!important</code> escalation</h2>
+              </header>
+
+              <div class="code-layout">
+                <code-block lang="css"
+                  ><script type="text/plain">
+                  /* Step 1: override a library */
+                  .nav a {
+                    color: black !important;
+                  }
+
+                  /* Step 2: override the override */
+                  .nav a.active {
+                    color: blue !important;
+                  }
+
+                  /* Step 3: … */
+                  #sidebar .nav a.active {
+                    color: red !important;
+                  }
+                </script></code-block
+                >
+
+                <aside class="panel panel--annotation">
+                  <p class="panel__eyebrow">With layers instead</p>
+                  <code-block lang="css"
+                    ><script type="text/plain">
+                    @layer library, app;
+
+                    @layer app {
+                      .nav a        { color: black; }
+                      .nav a.active { color: blue; }
+                    }
+
+                    /* No !important needed —
+                       layer order wins */
+                  </script></code-block
+                  >
+                </aside>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="cascade-problem-nesting"
+          class="slide slide--code js-slide"
+          data-accent="purple"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <header class="slide__header">
+                <p class="eyebrow">In practice</p>
+                <h2 class="slide-title">Deep nesting specificity creep</h2>
+              </header>
+
+              <div class="code-layout">
+                <code-block lang="css"
+                  ><script type="text/plain">
+                  /* It starts simple */
+                  .nav a { color: gray; }
+
+                  /* Then someone overrides */
+                  .sidebar .nav a { color: black; }
+
+                  /* Then someone overrides that */
+                  .page .sidebar .nav a { color: blue; }
+
+                  /* Then… */
+                  #app .page .sidebar .nav a {
+                    color: red;
+                  }
+                </script></code-block
+                >
+
+                <aside class="panel panel--annotation">
+                  <p class="panel__eyebrow">Two fixes</p>
+                  <code-block lang="css"
+                    ><script type="text/plain">
+                    /* Flat selectors: stay at 0-1-0 */
+                    .nav-link        { color: gray; }
+                    .nav-link--active { color: blue; }
+
+                    /* Layer: isolate concerns */
+                    @layer layout, nav;
+
+                    @layer nav {
+                      .nav a { color: gray; }
+                      .nav a.active { color: blue; }
+                    }
+                  </script></code-block
+                  >
                 </aside>
               </div>
             </div>
@@ -834,8 +1500,267 @@
         </section>
       </div>
 
-      <!-- ─── Row 6: Modern CSS Worth Knowing ─── -->
+      <!-- ─── Row 6: Scoping & Organization ─── -->
       <div class="deck-row deck-row--multi js-deck-row" id="row-6">
+        <section
+          id="scoping-intro"
+          class="slide slide--section js-slide"
+          data-accent="green"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <div class="slide__content">
+                <p class="eyebrow">Section 7</p>
+                <h2 class="section-title">Scoping &amp; Organization</h2>
+                <p class="section-summary">
+                  Where does your CSS go? globals.css, component files,
+                  utility classes — and why styles leak.
+                </p>
+              </div>
+              <footer class="slide__footer">
+                <span class="kicker">Where does your CSS go?</span>
+              </footer>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="scoping-problem"
+          class="slide slide--code js-slide"
+          data-accent="green"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <header class="slide__header">
+                <p class="eyebrow">The problem</p>
+                <h2 class="slide-title">Styles leak by default</h2>
+              </header>
+
+              <div class="code-layout">
+                <code-block lang="css"
+                  ><script type="text/plain">
+                  /* globals.css */
+                  .title {
+                    font-size: 2rem;
+                    color: black;
+                  }
+
+                  /* ProductCard.css */
+                  .title {
+                    font-size: 1rem;
+                    color: gray;
+                  }
+
+                  /* Both target every .title on the page */
+                </script></code-block
+                >
+
+                <aside class="panel panel--annotation">
+                  <p class="panel__eyebrow">Why it happens</p>
+                  <ul class="feature-list">
+                    <li>CSS is global by default</li>
+                    <li>Same class name = collision</li>
+                    <li>Source order decides the winner</li>
+                    <li>Importing a component can break another</li>
+                  </ul>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="scoping-globals"
+          class="slide slide--code js-slide"
+          data-accent="green"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <header class="slide__header">
+                <p class="eyebrow">The split</p>
+                <h2 class="slide-title">globals.css vs components</h2>
+              </header>
+
+              <div class="code-layout">
+                <code-block lang="css"
+                  ><script type="text/plain">
+                  /* globals.css */
+
+                  /* Layer architecture */
+                  @layer ds, app, overrides;
+                  @import "design-system.css" layer(ds);
+                  @import "third-party.css" layer(ds);
+
+                  /* Reset */
+                  *, *::before, *::after {
+                    box-sizing: border-box;
+                  }
+
+                  /* Design tokens */
+                  :root {
+                    --color-primary: #0066ff;
+                    --font-body: "Inter", sans-serif;
+                  }
+
+                  /* Base element styles */
+                  body { font-family: var(--font-body); }
+                  a    { color: var(--color-primary); }
+                </script></code-block
+                >
+
+                <aside class="panel panel--annotation">
+                  <p class="panel__eyebrow">Component CSS</p>
+                  <code-block lang="css"
+                    ><script type="text/plain">
+                    /* ProductCard.module.css */
+                    /* Only styles for THIS component */
+                    .root   { display: grid; gap: 1rem; }
+                    .title  { font-size: 1rem; }
+
+                    /* Does NOT import design-system.css
+                       — that's globals' job.
+
+                       Rule: keep globals low specificity
+                       (elements, :root) so components
+                       can override with a single class. */
+                  </script></code-block
+                  >
+                </aside>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="scoping-bem"
+          class="slide slide--code js-slide"
+          data-accent="green"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <header class="slide__header">
+                <p class="eyebrow">Approach 1</p>
+                <h2 class="slide-title">BEM — naming convention</h2>
+              </header>
+
+              <div class="code-layout">
+                <code-block lang="css"
+                  ><script type="text/plain">
+                  /* Block__Element--Modifier */
+                  .product-card { }
+                  .product-card__title {
+                    font-size: 1rem;
+                    color: gray;
+                  }
+                  .product-card__title--featured {
+                    color: blue;
+                  }
+
+                  /* No collision with .hero__title */
+                </script></code-block
+                >
+
+                <aside class="panel panel--annotation">
+                  <p class="panel__eyebrow">Trade-offs</p>
+                  <ul class="feature-list">
+                    <li>No tooling needed — works everywhere</li>
+                    <li>Scoping through discipline</li>
+                    <li>Verbose class names</li>
+                    <li>Nothing stops you from breaking the convention</li>
+                  </ul>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="scoping-modules"
+          class="slide slide--code js-slide"
+          data-accent="green"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <header class="slide__header">
+                <p class="eyebrow">Approach 2</p>
+                <h2 class="slide-title">CSS Modules — tooling</h2>
+              </header>
+
+              <div class="code-layout">
+                <code-block lang="css"
+                  ><script type="text/plain">
+                  /* ProductCard.module.css */
+                  .title {
+                    font-size: 1rem;
+                    color: gray;
+                  }
+
+                  /* Build output: */
+                  .ProductCard_title_x7f2a {
+                    font-size: 1rem;
+                    color: gray;
+                  }
+                </script></code-block
+                >
+
+                <aside class="panel panel--annotation">
+                  <p class="panel__eyebrow">Trade-offs</p>
+                  <ul class="feature-list">
+                    <li>Write simple class names — tooling scopes them</li>
+                    <li>Collisions are impossible</li>
+                    <li>Requires a build step</li>
+                    <li>Composing styles across files takes more work</li>
+                  </ul>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="scoping-tailwind"
+          class="slide slide--code js-slide"
+          data-accent="green"
+        >
+          <div class="slide__inner">
+            <div class="slide__frame">
+              <header class="slide__header">
+                <p class="eyebrow">Approach 3</p>
+                <h2 class="slide-title">Tailwind — utility classes</h2>
+              </header>
+
+              <div class="code-layout">
+                <code-block lang="html"
+                  ><script type="text/plain">
+                  <div class="rounded-lg p-4 shadow">
+                    <h3 class="text-sm text-gray-600">
+                      Product title
+                    </h3>
+                  </div>
+
+                  <!-- No custom CSS written.
+                       No class names to invent.
+                       No files to scope. -->
+                </script></code-block
+                >
+
+                <aside class="panel panel--annotation">
+                  <p class="panel__eyebrow">Trade-offs</p>
+                  <ul class="feature-list">
+                    <li>No scoping problem — no custom classes</li>
+                    <li>Design constraints built in</li>
+                    <li>Verbose markup</li>
+                    <li>Custom designs need <code>@apply</code> or config</li>
+                  </ul>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- ─── Row 7: Modern CSS Worth Knowing ─── -->
+      <div class="deck-row deck-row--multi js-deck-row" id="row-7-modern">
         <section
           id="modern-intro"
           class="slide slide--section js-slide"
@@ -844,7 +1769,7 @@
           <div class="slide__inner">
             <div class="slide__frame">
               <div class="slide__content">
-                <p class="eyebrow">Section 7</p>
+                <p class="eyebrow">Section 8</p>
                 <h2 class="section-title">Modern CSS Worth Knowing</h2>
                 <p class="section-summary">
                   Three features that meaningfully change how you build
@@ -988,8 +1913,8 @@
         </section>
       </div>
 
-      <!-- ─── Row 7: Q&A ─── -->
-      <div class="deck-row js-deck-row" id="row-7">
+      <!-- ─── Row 8: Q&A ─── -->
+      <div class="deck-row js-deck-row" id="row-8">
         <section id="qa" class="slide slide--qa js-slide" data-accent="blue">
           <div class="slide__inner">
             <div class="slide__frame">
@@ -997,8 +1922,7 @@
                 <p class="eyebrow">Closing</p>
                 <h2 class="display-title">Q&amp;A</h2>
                 <p class="lede">
-                  Questions, disagreements, war stories, or things you want to
-                  see in real code?
+
                 </p>
                 <div class="meta-row"><span>Patrick Edqvist</span></div>
               </div>
