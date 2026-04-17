@@ -49,8 +49,14 @@ if (demo) {
     render();
   }
 
-  prevBtn.addEventListener('click', (e) => { e.stopPropagation(); advance(-1); });
-  nextBtn.addEventListener('click', (e) => { e.stopPropagation(); advance(1); });
+  prevBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    advance(-1);
+  });
+  nextBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    advance(1);
+  });
 
   render();
 }
