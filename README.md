@@ -1,6 +1,6 @@
 # CSS Presentation Deck
 
-A 2D slide deck built with native CSS scroll snapping and Vite. Navigation works like the [CodyHouse Cerere template](https://codyhouse.co/demo-templates/cerere/index.html) — arrow down/up moves between sections, arrow left/right moves deeper within a section.
+A slide deck built with native CSS scroll snapping. Use arrow down/up moves between sections, arrow left/right moves deeper within a section. Fullscreen is available too.
 
 ## Quick start
 
@@ -102,7 +102,3 @@ npm run build
 ```
 
 Output goes to `dist/`. It's static HTML/CSS/JS — host anywhere.
-
-## Design tokens
-
-Theme colours and typography are CSS custom properties defined at the top of `theme.css`. The palette is GitHub-inspired dark mode. Change the `:root` block to retheme the whole deck.
