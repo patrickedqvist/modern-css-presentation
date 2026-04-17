@@ -102,3 +102,17 @@ npm run build
 ```
 
 Output goes to `dist/`. It's static HTML/CSS/JS — host anywhere.
+
+## GitHub Pages deployment
+
+This repository includes a GitHub Actions workflow at `.github/workflows/deploy-pages.yml` that:
+
+1. Installs dependencies
+2. Runs `npm run build`
+3. Publishes `dist/` to GitHub Pages
+
+To enable it:
+
+1. Go to **Settings → Pages**
+2. Set **Source** to **GitHub Actions**
+3. Push to `main` (or run the workflow manually from **Actions**)
