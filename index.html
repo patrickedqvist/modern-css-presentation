@@ -1070,10 +1070,11 @@
               <div class="code-layout">
                 <code-block lang="css"
                   ><script type="text/plain">
-                  p             { color: gray; }   /* 0-0-1 */
-                  .card p       { color: blue; }   /* 0-1-1 */
-                  .card .title  { color: green; }  /* 0-2-0 */
-                  #main .card p { color: red; }    /* 1-1-1 ✅ */
+                    h1 { color: yellow; }             /* 0-0-1 */
+                    .article h1 { color: green; }     /* 0-1-1 */
+                    .article .title { color: blue; }  /* 0-2-0 */
+                    .article h1.title { color: red; } /* 0-2-1 */
+                    #title { color: magenta; }        /* 1-0-0 — ✅ Wins */
                 </script></code-block
                 >
 
@@ -1081,12 +1082,9 @@
                   <p class="panel__eyebrow">The HTML</p>
                   <code-block lang="html"
                     ><script type="text/plain">
-                    <div id="main">
-                      <div class="card">
-                        <p class="title">Title</p>
-                        <p>Body text</p>
-                      </div>
-                    </div>
+                      <article class="article">
+                        <h1 id="title" class="title">My title</h1>
+                      </article>
                   </script></code-block
                   >
                 </aside>
